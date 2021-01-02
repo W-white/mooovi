@@ -1,0 +1,37 @@
+<div class="user_page">
+  <header class="user_page-header">
+    <div class="yjContainer">
+      <a href="">
+        <div class="user_image"><%= image_tag current_user.image %></div>
+        <h2><%= current_user.nickname %><span>さんのマイページ</span></h2>
+        <p>アドレス：<%= current_user.email %></p>
+      </a>
+    </div>
+  </header>
+  <div class="pt1em pb1em" id="contents">  <div id="main_cnt_wrapper">
+    <div id="yjContentsBody">
+      <div class="yjContainer">
+        <ul class="user_page-contents">
+        <% current_user.reviews.each do |review| %>
+        
+          <li style="background-image: url('<%= rails_blob_path(review.product.image) %>')">
+            <div class="meta">
+              <header>
+                <div class="title"><%= review.product.title %></div>
+                <%= link_to "編集", "/products/#{review.product.id}/reviews/#{review.id }/edit"%>　/　
+                <%= link_to "レビュー削除", "/products/#{review.product.id}/reviews/#{review.id }", method: :delete %>
+              </header>
+              
+              <div class="tiele">＜<%= review.genre %>＞</div>
+              <div class="user_review"><%= review.review %></div>
+              
+            </div>
+          </li>
+        
+        <% end %>
+          
+        </ul>
+
+      </div>
+    </div>
+  </div>

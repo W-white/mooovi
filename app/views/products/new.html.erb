@@ -1,0 +1,45 @@
+ 
+    
+    <div id="main_cnt_wrapper">
+    <div id="yjContentsBody">
+      <div class="yjContainer">
+        <span class="yjGuid"><a id="yjContentsStart" name="yjContentsStart"></a><img alt="ここから本文です" height="1" src="http://i.yimg.jp/yui/jp/tmpl/1.1.0/audionav.gif" width="1"></span>
+        <div id="yjMain">
+          <article class="section">
+            <div class="container">
+              <header class="header header--section">
+                <h2 class="text-middle">
+                  <i class="icon-movie color-gray-light"></i>登録するメニューを設定
+                </h2>
+              </header>
+              
+         
+              
+              <%= form_for(@product) do |f| %>
+			      <%= f.text_field :title, placeholder: "例：今週のメニューは？" , :size => "50*30"%></br>
+			      <%= f.text_field :tag, placeholder: "例：肉　魚　パスタ　春　夏　秋　冬　サーモン　アナゴ" , :size => "40*30"%>
+			      <p>タグの入力ルール：ランチの3種類は、肉or魚orパスタで入力してください。季節以外はカタカナで入力してください。</p>
+			      <p>※両方必ず入力してください。</p>
+			      <h4>サンプル画像</h4>
+			      <p>※画像も必ず入力してください。</p>
+			      <div class="form-group file">
+			        <%= f.file_field :image, class: "form-control floating-label", placeholder: "画像アップロード" %>
+			      </div>
+			      
+			      <%= f.submit "登録する" %>
+			      
+			    <% end %>
+    
+            </div>
+            
+          </article>
+          <article class="section">
+            <div class="container">
+              <header class="header header--section">
+                
+              </header>
+              
+            </div>
+          </article>
+        </div>
+        <div id="yjSub">

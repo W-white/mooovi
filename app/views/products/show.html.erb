@@ -1,0 +1,53 @@
+  <div id="main_cnt_wrapper">
+    <div id="yjContentsBody">
+      <div class="yjContainer">
+        <span class="yjGuid"><a id="yjContentsStart" name="yjContentsStart"></a><img alt="ここから本文です" height="1" src="http://i.yimg.jp/yui/jp/tmpl/1.1.0/audionav.gif" width="1"></span>
+        <div id="yjMain">
+          <article class="section">
+            <div class="container">
+              <header class="header header--section">
+                <h2 class="text-middle">
+                  <i class="icon-movie color-gray-light"></i><%= @product.title %>
+                </h2>
+              </header>
+              <p style="text-align: center">
+                <img src="<%= rails_blob_path(@product.image) %>" alt="<%= @product.title %>" style="width:100%; height:100%;">
+              </p>
+              <div style="text-align: right">
+                <a href="/products/<%= @product.id %>/reviews/new">このメニューに投稿する</a>
+              </div>
+              <% if current_user.id == 2 %>
+              <div style="text-align: right">
+                
+                <%= link_to "メニュー更新", edit_product_path(@product.id) %>
+              </div>
+              <div style="text-align: right">
+                
+                <%= link_to "メニュー削除", "/products/#{@product.id}", method: :delete %>
+              </div>
+              <% end %>
+              <header class="header header--section">
+                <h2 class="text-middle">
+                  <i class="icon-movie color-gray-light"></i>みんなの投稿
+                </h2>
+              </header>
+              <ul style="padding: 0">
+              
+              <% @product.reviews.each do |review| %>
+                <li style="border-bottom: dotted 1px">
+                  <div class="thumbnail__caption">
+                    <h3 class="text-xsmall text-overflow" title="テスト太郎">
+                      <%= review.genre %>　by　<%= review.user.nickname %>
+                    </h3>
+                    
+                    <p>
+                      <%= review.review %>
+                    </p>
+                  </div>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div id="yjSub">
